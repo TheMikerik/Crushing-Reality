@@ -1,4 +1,6 @@
 # Crushing Reality Game
+![Showcase](./showcase/first_map.png)
+
 
 ## Info
 - 16x16 blocks
@@ -25,4 +27,3 @@
 ## Differences
 - Bushes are replaced by ice blocks
 - Knife is replaced by fireballs
-![Alt text](image.png)
