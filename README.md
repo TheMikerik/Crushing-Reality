@@ -4,8 +4,9 @@
 
 ## Info
 - 16x16 blocks
+- 3x scale
 - 15 rows
-- 22 columns
+- 23 columns
 
 ## Blocks
 - [ ] Blocks
@@ -13,13 +14,13 @@
     - [x] Background (VOID, BACKGROUND)
     - [x] Bush (ICE)
     - [x] Brick (dirt ???)
-    - [ ] Chained
+    - [ ] Obsticle
     - [ ] Traps
 - [ ] Teleportal
-- [ ] Exit door
-- [ ] Entry door
+- [x] Exit door (DOORS)
+- [x] Entry door (DOORS)
 - [ ] Teleportal
-- [ ] Knife
+- [ ] Knife  (FIRE_GUN)
 - [ ] Player
 - [ ] NPC
 - [ ] Coin

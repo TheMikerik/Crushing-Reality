@@ -16,53 +16,36 @@ public class MapGenerator extends Application {
 	private static final int COLUMNS = 23;
 	private static final int TILE_SIZE = 55; // Size of each tile in pixels
 
-	private String[] worldMap = {
+	private final String[] worldMap = {
 			"VVcbVVVVVVVVVVVVcVVVbVV",
 			"VbcbbVVVVcVVVVVcbcVVccb",
 			"TTTTTTTTTTTTTTTTTTTTTTT",
 			"DDDDBBB...........DDDDD",
-			"DDDD..............DDDDD",
+			"DDDD............d.DDDDD",
 			"DDDD........DBBDDDDDDDD",
-			"DDD....D...BB..BDDDDDDD",
+			"DDDD...D...BB..BDDDDDDD",
 			"DDDDDDDDD.......BDDDDDD",
 			"DDDBBBBBBB.......DDDDDD",
 			"DDD.........DDDDDDDDDDD",
 			"DDD.........DDDDDDDDDDD",
-			"DDD......DDDDDDDDDDDDDD",
+			"DDD.d....DDDDDDDDDDDDDD",
 			"DDDDDD.DDDDDDDDDDDDDDDD",
 			"DDDDDD.DDDDDDDDDDDDDDDD",
 			"DDDDDDDDDDDDDDDDDDDDDDD",
 	};
 
-//	private String[] worldMap = {
-//			"VVcbVVVVVVVVVVVVVVVVcc",
-//			"VbcbbVVVVcVVVVVcbVVcbb",
-//			"TTTTTTTTTTTTTTTTTTTTTT",
-//			"......................",
-//			"......................",
-//			"......................",
-//			"......................",
-//			"......................",
-//			"......................",
-//			"......................",
-//			"......................",
-//			"......................",
-//			"......................",
-//			"......................",
-//			"DDDDDDDDDDDDDDDDDDDDDD",
-//	};
-
-	private Map<Character, String> tileImageMap = new HashMap<>();
+	private final Map<Character, String> tileImageMap = new HashMap<>();
 
 	private void initializeTileImageMap() {
 		tileImageMap.put('V', "16p/VOID.png");
-		tileImageMap.put('T', "16p/TOPDIRT.png");
+		tileImageMap.put('T', "16p/TOP_DIRT.png");
 		tileImageMap.put('D', "16p/DIRT.png");
-		tileImageMap.put('B', "16p/BOTTOMDIRT.png");
+		tileImageMap.put('B', "16p/BOTTOM_DIRT.png");
 		tileImageMap.put('.', "16p/BACKGROUND.png");
 		tileImageMap.put('I', "16p/ICE.png");
 		tileImageMap.put('b', "16p/BARREL.png");
 		tileImageMap.put('c', "16p/CASE.png");
+		tileImageMap.put('d', "16p/DOORS.png");
 	}
 
 	@Override
