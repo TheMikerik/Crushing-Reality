@@ -10,15 +10,14 @@
 
 ## Blocks
 - [ ] Blocks
-    - [x] Border (DIRT, TOPDIRT, BOTTOMDIRT)
+    - [x] Border (DIRT, DIRT_TOP, DIRT_BOT, DIRT_EMERALD, DIRT_GOLD, DIRT_DIA)
     - [x] Background (VOID, BACKGROUND)
     - [x] Bush (ICE)
     - [x] Brick (dirt ???)
     - [ ] Obsticle
     - [ ] Traps
-- [ ] Teleportal
-- [x] Exit door (DOORS)
-- [x] Entry door (DOORS)
+- [x] Exit door (DOORS_EXIT)
+- [x] Entry door (DOORS_ENTRY)
 - [ ] Teleportal
 - [ ] Knife  (FIRE_GUN)
 - [ ] Player

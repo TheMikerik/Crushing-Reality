@@ -21,31 +21,34 @@ public class MapGenerator extends Application {
 			"VbcbbVVVVcVVVVVcbcVVccb",
 			"TTTTTTTTTTTTTTTTTTTTTTT",
 			"DDDDBBB...........DDDDD",
-			"DDDD............d.DDDDD",
-			"DDDD........DBBDDDDDDDD",
-			"DDDD...D...BB..BDDDDDDD",
-			"DDDDDDDDD.......BDDDDDD",
+			"DDDD...I........d.DDDDD",
+			"DDDD...I....DBBDDDDDeDD",
+			"DDDD...D...BB..BDDDeeDD",
+			"eeDDDDDDD.......BDDDDDD",
 			"DDDBBBBBBB.......DDDDDD",
-			"DDD.........DDDDDDDDDDD",
+			"DDD.........DDDDDDDDDgg",
 			"DDD.........DDDDDDDDDDD",
 			"DDD.d....DDDDDDDDDDDDDD",
-			"DDDDDD.DDDDDDDDDDDDDDDD",
-			"DDDDDD.DDDDDDDDDDDDDDDD",
-			"DDDDDDDDDDDDDDDDDDDDDDD",
+			"DDDDDD.DDDDDDggDDDaDDDD",
+			"DDDDDD.DDDDDDDDDDaaDDDD",
+			"DaDDDDDDDDeeDDDDDDDDDgD",
 	};
 
 	private final Map<Character, String> tileImageMap = new HashMap<>();
 
 	private void initializeTileImageMap() {
 		tileImageMap.put('V', "16p/VOID.png");
-		tileImageMap.put('T', "16p/TOP_DIRT.png");
+		tileImageMap.put('T', "16p/DIRT_TOP.png");
 		tileImageMap.put('D', "16p/DIRT.png");
-		tileImageMap.put('B', "16p/BOTTOM_DIRT.png");
+		tileImageMap.put('B', "16p/DIRT_BOT.png");
 		tileImageMap.put('.', "16p/BACKGROUND.png");
 		tileImageMap.put('I', "16p/ICE.png");
 		tileImageMap.put('b', "16p/BARREL.png");
 		tileImageMap.put('c', "16p/CASE.png");
 		tileImageMap.put('d', "16p/DOORS.png");
+		tileImageMap.put('a', "16p/DIRT_DIA.png");
+		tileImageMap.put('g', "16p/DIRT_GOLD.png");
+		tileImageMap.put('e', "16p/DIRT_EMERALD.png");
 	}
 
 	@Override
