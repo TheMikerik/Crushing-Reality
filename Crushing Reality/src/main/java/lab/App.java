@@ -18,11 +18,10 @@ public class App extends Application{
 
     private final int ROWS = 15;
     private final int COLUMNS = 23;
-    private final int TILE_SIZE = 16;
-    private final int SCALE = 3;
+    private final int TILE_SIZE = 55;
 
-    private final int WIDTH = COLUMNS * TILE_SIZE * SCALE;
-    private final int HEIGHT = ROWS * TILE_SIZE * SCALE;
+    private final int WIDTH = COLUMNS * TILE_SIZE;
+    private final int HEIGHT = ROWS * TILE_SIZE;
 
     private Canvas canvas;
     private AnimationTimer timer;
