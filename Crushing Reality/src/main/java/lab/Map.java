@@ -1,5 +1,6 @@
 package lab;
 
+import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -9,8 +10,9 @@ import javafx.scene.shape.Sphere;
 import java.io.InputStream;
 import java.util.HashMap;
 
-public class Map implements DrawableSimulable, Collisionable{
+public class Map implements DrawableSimulable{
     private static final double TILE_SIZE = 55;
+    private Player player = new Player(new Point2D(5*TILE_SIZE, 5*TILE_SIZE));
     private char[][] worldMap = {
         {'V', 'V', 'c', 'b', 'V', 'V', 'V', 'V', 'V', 'V', 'V', 'V', 'V', 'c', 'V', 'V', 'V', 'b', 'V', 'V', 'V', 'V', 'V'},
         {'V', 'b', 'c', 'b', 'b', 'V', 'V', 'V', 'c', 'V', 'V', 'V', 'V', 'c', 'b', 'c', 'c', 'b', 'c', 'c', 'V', 'V', 'V'},
@@ -28,9 +30,8 @@ public class Map implements DrawableSimulable, Collisionable{
         {'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'a', '.', 'D', 'D', 'D', 'D', 'g', 'g'},
         {'D', 'a', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'e', 'e', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'g'}
     };
-    Rectangle2D[][] map_blocks = new Rectangle2D[worldMap.length][worldMap[0].length];
-    Collisionable[] blocks;
-    private java.util.Map<Character, Image> tileImages = new HashMap<>();
+    private Collisionable[] map_blocks;
+    private java.util.Map<Character, Image>  tileImages = new HashMap<>();
 
     public Map() {
         initializeTileImages();
@@ -72,10 +73,17 @@ public class Map implements DrawableSimulable, Collisionable{
                 if (tileImages.containsKey(tile)) {
                     Image image = tileImages.get(tile);
                     gc.drawImage(image, j * TILE_SIZE, i * TILE_SIZE);
-                    map_blocks[i][j] = new Rectangle2D(j*TILE_SIZE, i*TILE_SIZE, TILE_SIZE, TILE_SIZE);
+                    if(tile == '.' || tile == 'd') {
+                        System.out.println("Void at " + i  + " " + j);
+                    }
+                    else{
+                        map_blocks = new Collisionable[]{
+                                        new Block(j * TILE_SIZE, i * TILE_SIZE, TILE_SIZE, TILE_SIZE)};
+                    }
                 }
             }
         }
+        player.draw(gc);
     }
 
     @Override
