@@ -22,6 +22,7 @@ public class GameController {
 
 
     public GameController(){
+        System.out.println("Controller initialized");
     }
 
     public void startGame() {

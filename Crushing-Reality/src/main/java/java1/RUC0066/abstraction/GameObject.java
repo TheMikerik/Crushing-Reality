@@ -19,7 +19,8 @@ public abstract class GameObject implements Collisionable {
         this.rectangle = new Rectangle2D(positionX, positionY, width, height);
     }
 
-    public Rectangle2D getRectangle(){
-        return this.rectangle;
-    }
+    public int getX() { return positionX;}
+    public int getY() { return positionY;}
+    public int getW() { return width;}
+    public int getH() { return height;}
 }

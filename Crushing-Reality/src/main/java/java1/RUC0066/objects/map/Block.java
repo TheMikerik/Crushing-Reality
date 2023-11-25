@@ -1,4 +1,4 @@
-package java1.RUC0066.map;
+package java1.RUC0066.objects.map;
 
 import java1.RUC0066.abstraction.TextureObject;
 import javafx.geometry.Rectangle2D;
@@ -6,17 +6,13 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
 public class Block extends TextureObject {
-    private int x;
-    private int y;
-    private int w;
-    private int h;
-
     Block(int positionX, int positionY, int width, int height, Image texture) {
         super(positionX, positionY, width, height, texture);
-        this.x = positionX;
-        this.y = positionY;
-        this.w = width;
-        this.h = height;
+    }
+
+    @Override
+    public Rectangle2D getRectangle() {
+        return new Rectangle2D(this.getX(), this.getY(), this.getH(), this.getW());
     }
 
     @Override
@@ -27,7 +23,7 @@ public class Block extends TextureObject {
     @Override
     public void draw(GraphicsContext gc) {
         gc.save();
-        gc.drawImage(this.getTexture(), x, y, w, h);
+        gc.drawImage(this.getTexture(), this.getX(), this.getY(), this.getH(), this.getW());
         gc.restore();
     }
 
