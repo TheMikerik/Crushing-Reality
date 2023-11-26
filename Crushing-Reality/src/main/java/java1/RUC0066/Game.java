@@ -38,13 +38,21 @@ public class Game {
                 for(DrawableSimulable others : entities) {
                     if(entity != others && others instanceof Map map){
                         Block[][] blocks = map.getBlocks();
+                        boolean colle = false;
                         for (Block[] row : blocks) {
                             for (Block block : row) {
                                 if ( block.collisional() && player.intersect(block.getRectangle()) ){
-                                    System.out.println("Player collided with block");
+                                    colle = true;
                                 }
+//                                if ( block.collisional() && player.intersect(block.getRectangle()) ){
+//                                    player.isInCollision(true);
+//                                }
+//                                else{
+//                                    player.isInCollision(false);
+//                                }
                             }
                         }
+                        player.isInCollision(colle);
                     }
                 }
             }

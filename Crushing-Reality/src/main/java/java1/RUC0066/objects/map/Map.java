@@ -36,8 +36,8 @@ public class Map implements DrawableSimulable {
     private int block_length;
     private int TILE_SIZE;
 
-    private Rectangle2D spawnPoint;
-    private Rectangle2D exitPoint;
+    private Point2D spawnPoint;
+    private Point2D exitPoint;
 
     public Map(GameInfo gi) {
         TILE_SIZE = gi.getTileSize();
@@ -67,10 +67,10 @@ public class Map implements DrawableSimulable {
                     else {
                         blocks[i][j] = new Block(j * TILE_SIZE, i * TILE_SIZE, TILE_SIZE, TILE_SIZE, image, false);
                         if (tile == 'd') {
-                            this.spawnPoint = new Rectangle2D(j * TILE_SIZE, i * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+                            this.spawnPoint = new Point2D(j * TILE_SIZE, i * TILE_SIZE);
                         }
                         if (tile == 'o') {
-                            this.exitPoint = new Rectangle2D(j * TILE_SIZE, i * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+                            this.exitPoint = new Point2D(j * TILE_SIZE, i * TILE_SIZE);
                         }
                     }
                 }
@@ -111,10 +111,10 @@ public class Map implements DrawableSimulable {
         return null;
     }
 
-    public Rectangle2D getSpawnPoint(){
+    public Point2D getSpawnPoint(){
         return spawnPoint;
     }
-    public Rectangle2D getExitPoint(){
+    public Point2D getExitPoint(){
         return exitPoint;
     }
 
