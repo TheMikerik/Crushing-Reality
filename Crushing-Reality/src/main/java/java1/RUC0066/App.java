@@ -29,6 +29,7 @@ public class App extends Application {
 
         stage.setOnCloseRequest(this::exitProgram);
         controller = loader.getController();
+        controller.setScene(scene);
         controller.startGame();
     }
 

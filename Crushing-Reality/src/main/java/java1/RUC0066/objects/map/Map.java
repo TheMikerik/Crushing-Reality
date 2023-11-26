@@ -119,6 +119,11 @@ public class Map implements DrawableSimulable {
     }
 
     @Override
-    public void simulate(double deltaT) {
+    public void simulate(GraphicsContext gc) {
+        for (Block[] row : blocks) {
+            for (Block block : row) {
+                block.draw(gc);
+            }
+        }
     }
 }

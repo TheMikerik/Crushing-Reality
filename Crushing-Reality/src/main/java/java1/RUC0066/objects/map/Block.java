@@ -28,6 +28,6 @@ public class Block extends TextureObject {
     }
 
     @Override
-    public void simulate(double deltaT) {
+    public void simulate(GraphicsContext gc) {
     }
 }

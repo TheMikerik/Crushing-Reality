@@ -4,10 +4,18 @@ import java1.RUC0066.abstraction.MovingObject;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
 
 public class Player extends MovingObject {
-    public Player(int positionX, int positionY, int width, int height, Image texture) {
+
+    private boolean moveUp, moveDown, moveLeft, moveRight, jumping;
+
+    private final int MOVEMENT_SPEED;
+
+    public Player(int positionX, int positionY, int width, int height, Image texture, int movementSpeed) {
         super(positionX, positionY, width, height, texture);
+        this.MOVEMENT_SPEED = movementSpeed;
+
         System.out.println("Player generated");
     }
 
@@ -29,6 +37,66 @@ public class Player extends MovingObject {
     }
 
     @Override
-    public void simulate(double deltaT) {
+    public void simulate(GraphicsContext gc) {
+        if (moveUp) {
+            this.setY(this.getY() - MOVEMENT_SPEED);
+            System.out.println("Player moved UP to: " + this.getX() + " " + this.getY());
+        }
+        if (moveDown) {
+            this.setY(this.getY() + MOVEMENT_SPEED);
+            System.out.println("Player moved DOWN to: " + this.getX() + " " + this.getY());
+        }
+        if (moveLeft) {
+            this.setX(this.getX() - MOVEMENT_SPEED);
+            System.out.println("Player moved LEFT to: " + this.getX() + " " + this.getY());
+        }
+        if (moveRight) {
+            this.setX(this.getX() + MOVEMENT_SPEED);
+            System.out.println("Player moved RIGHT to: " + this.getX() + " " + this.getY());
+        }
+
+        gc.save();
+        gc.drawImage(this.getTexture(), this.getX(), this.getY(), this.getW(), this.getH());
+        gc.restore();
+    }
+
+    public void handleKeyPress(KeyCode code){
+        switch(code){
+            case W:
+                moveUp = true;
+                break;
+            case S:
+                moveDown = true;
+                break;
+            case A:
+                moveLeft = true;
+                break;
+            case D:
+                moveRight = true;
+                break;
+            case SPACE:
+                jumping = true;
+                break;
+        }
+    }
+
+    public void handleKeyRelease(KeyCode code){
+        switch(code){
+            case W:
+                moveUp = false;
+                break;
+            case S:
+                moveDown = false;
+                break;
+            case A:
+                moveLeft = false;
+                break;
+            case D:
+                moveRight = false;
+                break;
+            case SPACE:
+                jumping = false;
+                break;
+        }
     }
 }

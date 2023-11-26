@@ -23,4 +23,7 @@ public abstract class GameObject implements Collisionable {
     public int getY() { return positionY;}
     public int getW() { return width;}
     public int getH() { return height;}
+
+    public void setX(int newX) { this.positionX = newX;}
+    public void setY(int newY) { this.positionY = newY;}
 }

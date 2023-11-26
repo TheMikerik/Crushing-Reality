@@ -26,9 +26,10 @@ public class DrawingThread extends AnimationTimer {
             game.draw(gc);
             first = false;
         }
-//        gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
         if (lastTime > 0){
-            game.simulate((now - lastTime) / 1e9);
+//            gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+//            game.simulate((now - lastTime) / 1e9);
+            game.simulate(gc);
         }
         lastTime = now;
     }
