@@ -17,7 +17,7 @@ public class Block extends TextureObject {
 
     @Override
     public boolean intersect(Rectangle2D rectangle) {
-        return true;
+        return getRectangle().intersects(rectangle);
     }
 
     @Override

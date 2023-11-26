@@ -32,7 +32,7 @@ public class Player extends MovingObject {
 
     @Override
     public boolean intersect(Rectangle2D rectangle) {
-        return false;
+        return getRectangle().intersects(rectangle);
     }
 
     @Override

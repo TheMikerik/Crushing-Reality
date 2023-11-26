@@ -1,14 +1,12 @@
 package java1.RUC0066;
 
-import java1.RUC0066.abstraction.Collisionable;
 import java1.RUC0066.abstraction.DrawableSimulable;
-import java1.RUC0066.abstraction.GameObject;
 import java1.RUC0066.objects.GameInfo;
+import java1.RUC0066.objects.map.Block;
 import java1.RUC0066.objects.map.Map;
 import java1.RUC0066.objects.player.Player;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
 
 public class Game {
     private final Canvas canvas;
@@ -36,20 +34,20 @@ public class Game {
     public void simulate(GraphicsContext gc) {
         for (DrawableSimulable entity : entities) {
             entity.simulate(gc);
-
             if (entity instanceof Player player) {
                 for(DrawableSimulable others : entities) {
-                    if(entity != others && ( others instanceof GameObject object && object.collisional() )){
-                        //if ( player.intersect(others))
-                        System.out.println("collision");
+                    if(entity != others && others instanceof Map map){
+                        Block[][] blocks = map.getBlocks();
+                        for (Block[] row : blocks) {
+                            for (Block block : row) {
+                                if ( block.collisional() && player.intersect(block.getRectangle()) ){
+                                    System.out.println("Player collided with block");
+                                }
+                            }
+                        }
                     }
                 }
             }
-//                for(DrawableSimulable others : entities) {
-//                    if(entity != others && others instanceof Collisionable otherCollisionable){
-//                        System.out.println("collision");
-//                    }
-//                }
         }
     }
 

@@ -118,6 +118,10 @@ public class Map implements DrawableSimulable {
         return exitPoint;
     }
 
+    public Block[][] getBlocks() {
+        return blocks;
+    }
+
     @Override
     public void draw(GraphicsContext gc) {
         gc.save();
