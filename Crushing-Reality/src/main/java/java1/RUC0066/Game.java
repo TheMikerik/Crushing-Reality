@@ -1,6 +1,8 @@
 package java1.RUC0066;
 
+import java1.RUC0066.abstraction.Collisionable;
 import java1.RUC0066.abstraction.DrawableSimulable;
+import java1.RUC0066.abstraction.GameObject;
 import java1.RUC0066.objects.GameInfo;
 import java1.RUC0066.objects.map.Map;
 import java1.RUC0066.objects.player.Player;
@@ -21,15 +23,8 @@ public class Game {
         this.gameInfo = new GameInfo();
 
         this.entities = new DrawableSimulable[2];
-        entities[0] = new Map(gameInfo.getTileSize());
-        entities[1] = new Player(
-                5 * gameInfo.getTileSize(),
-                11 * gameInfo.getTileSize(),
-                          gameInfo.getTileSize() - 15,
-                          gameInfo.getTileSize() - 15,
-                          new Image(getClass().getResourceAsStream("/java1/RUC0066/textures-16p/PLAYER.png")),
-                          this.gameInfo.getMovementSpeed()
-        );
+        entities[0] = new Map(gameInfo);
+        entities[1] = new Player(gameInfo);
     }
 
     public void draw(GraphicsContext gc) {
@@ -41,6 +36,20 @@ public class Game {
     public void simulate(GraphicsContext gc) {
         for (DrawableSimulable entity : entities) {
             entity.simulate(gc);
+
+            if (entity instanceof Player player) {
+                for(DrawableSimulable others : entities) {
+                    if(entity != others && ( others instanceof GameObject object && object.collisional() )){
+                        //if ( player.intersect(others))
+                        System.out.println("collision");
+                    }
+                }
+            }
+//                for(DrawableSimulable others : entities) {
+//                    if(entity != others && others instanceof Collisionable otherCollisionable){
+//                        System.out.println("collision");
+//                    }
+//                }
         }
     }
 

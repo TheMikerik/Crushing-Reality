@@ -6,8 +6,8 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
 public class Block extends TextureObject {
-    Block(int positionX, int positionY, int width, int height, Image texture) {
-        super(positionX, positionY, width, height, texture);
+    Block(int positionX, int positionY, int width, int height, Image texture, boolean collision_allowed) {
+        super(positionX, positionY, width, height, texture, collision_allowed);
     }
 
     @Override
@@ -17,7 +17,7 @@ public class Block extends TextureObject {
 
     @Override
     public boolean intersect(Rectangle2D rectangle) {
-        return false;
+        return true;
     }
 
     @Override

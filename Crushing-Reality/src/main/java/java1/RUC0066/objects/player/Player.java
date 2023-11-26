@@ -1,20 +1,26 @@
 package java1.RUC0066.objects.player;
 
 import java1.RUC0066.abstraction.MovingObject;
+import java1.RUC0066.objects.GameInfo;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 
 public class Player extends MovingObject {
 
     private boolean moveUp, moveDown, moveLeft, moveRight, jumping;
-
     private final int MOVEMENT_SPEED;
 
-    public Player(int positionX, int positionY, int width, int height, Image texture, int movementSpeed) {
-        super(positionX, positionY, width, height, texture);
-        this.MOVEMENT_SPEED = movementSpeed;
+    public Player(GameInfo gi) {
+        super(
+            (int) gi.getSpawn().getMinX() + 8,
+            (int) gi.getSpawn().getMinY() + 16,
+            gi.getTileSize() - 16,
+            gi.getTileSize() - 16,
+            gi.getPlayerTexture(),
+            true // COLLISION
+        );
+        this.MOVEMENT_SPEED = gi.getMovementSpeed();
 
         System.out.println("Player generated");
     }

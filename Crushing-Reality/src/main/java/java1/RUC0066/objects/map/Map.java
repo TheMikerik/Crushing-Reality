@@ -39,8 +39,8 @@ public class Map implements DrawableSimulable {
     private Rectangle2D spawnPoint;
     private Rectangle2D exitPoint;
 
-    public Map(int tileSize) {
-        TILE_SIZE = tileSize;
+    public Map(GameInfo gi) {
+        TILE_SIZE = gi.getTileSize();
 
         initializeTileImages();
 
@@ -49,6 +49,33 @@ public class Map implements DrawableSimulable {
 
         this.blocks = new Block[block_height][block_length];
 
+        this.initializeBlocks();
+        gi.setSpawn(this.getSpawnPoint());
+        gi.setExit(this.getExitPoint());
+    }
+
+    private void initializeBlocks(){
+        for (int i = 0; i < worldMap.length; i++) {
+            for (int j = 0; j < worldMap[i].length; j++) {
+                char tile = worldMap[i][j];
+                if (tileImages.containsKey(tile)) {
+                    Image image = tileImages.get(tile);
+
+                    if (tile != '.' && tile != 'd' && tile != 'o'){
+                        blocks[i][j] = new Block(j * TILE_SIZE, i * TILE_SIZE, TILE_SIZE, TILE_SIZE, image, true);
+                    }
+                    else {
+                        blocks[i][j] = new Block(j * TILE_SIZE, i * TILE_SIZE, TILE_SIZE, TILE_SIZE, image, false);
+                        if (tile == 'd') {
+                            this.spawnPoint = new Rectangle2D(j * TILE_SIZE, i * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+                        }
+                        if (tile == 'o') {
+                            this.exitPoint = new Rectangle2D(j * TILE_SIZE, i * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+                        }
+                    }
+                }
+            }
+        }
     }
 
     private void initializeTileImages() {
@@ -94,24 +121,9 @@ public class Map implements DrawableSimulable {
     @Override
     public void draw(GraphicsContext gc) {
         gc.save();
-
-        for (int i = 0; i < worldMap.length; i++) {
-            for (int j = 0; j < worldMap[i].length; j++) {
-                char tile = worldMap[i][j];
-                if (tileImages.containsKey(tile)) {
-                    Image image = tileImages.get(tile);
-                    blocks[i][j] = new Block(j * TILE_SIZE, i * TILE_SIZE, TILE_SIZE, TILE_SIZE, image);
-                    blocks[i][j].draw(gc);
-
-                    if (tile == 'd'){
-                        this.spawnPoint = new Rectangle2D(j*TILE_SIZE, i*TILE_SIZE, TILE_SIZE, TILE_SIZE);
-                        System.out.println("Spawn Point initialized");
-                    }
-                    if (tile == 'o'){
-                        this.exitPoint = new Rectangle2D(j*TILE_SIZE, i*TILE_SIZE, TILE_SIZE, TILE_SIZE);
-                        System.out.println("Exit Point initialized");
-                    }
-                }
+        for (Block[] row : blocks) {
+            for (Block block : row) {
+                block.draw(gc);
             }
         }
         gc.restore();
