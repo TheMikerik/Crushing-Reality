@@ -62,19 +62,19 @@ public class Player extends MovingObject {
         int orgY = this.getY();
 
         if (moveUp) {
-            this.setY( collision ? ((this.getY() / 55) + 1) * 55 : this.getY() - MOVEMENT_SPEED);
+            this.setY( collision ? orgY + MOVEMENT_SPEED : this.getY() - MOVEMENT_SPEED);
             System.out.println("Player moved UP to: " + this.getX() + " " + this.getY());
         }
         if (moveDown) {
-            this.setY( collision ? (this.getY() / 55) * 55 : this.getY() + MOVEMENT_SPEED);
+            this.setY( collision ? orgY - MOVEMENT_SPEED : this.getY() + MOVEMENT_SPEED);
             System.out.println("Player moved DOWN to: " + this.getX() + " " + this.getY());
         }
         if (moveLeft) {
-            this.setX( collision ? ((this.getX() / 55) + 1) * 55 : this.getX() - MOVEMENT_SPEED);
+            this.setX( collision ? orgX + MOVEMENT_SPEED : this.getX() - MOVEMENT_SPEED);
             System.out.println("Player moved LEFT to: " + this.getX() + " " + this.getY());
         }
         if (moveRight) {
-            this.setX( collision ? (this.getX() / 55) * 55 : this.getX() + MOVEMENT_SPEED);
+            this.setX( collision ? orgX - MOVEMENT_SPEED : this.getX() + MOVEMENT_SPEED);
             System.out.println("Player moved RIGHT to: " + this.getX() + " " + this.getY());
         }
         if (respawn){

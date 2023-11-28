@@ -16,7 +16,7 @@ public class GameInfo {
         tileSize = 55;
         movementSpeed = 2;
         player_texture = new Image(getClass().getResourceAsStream("/java1/RUC0066/textures-16p/PLAYER.png"));
-        player_bounce = 3;
+        player_bounce = 0;
     }
 
     public int getTileSize(){

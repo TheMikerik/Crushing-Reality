@@ -44,12 +44,6 @@ public class Game {
                                 if ( block.collisional() && player.intersect(block.getRectangle()) ){
                                     colle = true;
                                 }
-//                                if ( block.collisional() && player.intersect(block.getRectangle()) ){
-//                                    player.isInCollision(true);
-//                                }
-//                                else{
-//                                    player.isInCollision(false);
-//                                }
                             }
                         }
                         player.isInCollision(colle);
