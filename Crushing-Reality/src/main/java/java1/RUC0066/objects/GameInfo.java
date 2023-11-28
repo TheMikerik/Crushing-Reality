@@ -1,6 +1,7 @@
 package java1.RUC0066.objects;
 
 import java1.RUC0066.objects.map.Block;
+import java1.RUC0066.objects.map.Coin;
 import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
 
@@ -14,6 +15,7 @@ public class GameInfo {
     private Point2D exit;
     private final int gravity;
     private Block[][] blocks;
+    private Coin[] coins;
 
     public GameInfo(){
         tileSize = 55;
@@ -51,6 +53,9 @@ public class GameInfo {
     }
     public void saveMapBlocks(Block[][] blocks){
         this.blocks = blocks;
+    }
+    public void saveCoins(Coin[] coins){
+        this.coins = coins;
     }
     public Block[][] getMapBlocks(){
         return this.blocks;

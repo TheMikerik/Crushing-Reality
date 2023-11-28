@@ -2,7 +2,8 @@ package java1.RUC0066;
 
 import java1.RUC0066.abstraction.DrawableSimulable;
 import java1.RUC0066.objects.GameInfo;
-import java1.RUC0066.objects.map.Block;
+import java1.RUC0066.objects.map.Coin;
+import java1.RUC0066.objects.map.Coins;
 import java1.RUC0066.objects.map.Map;
 import java1.RUC0066.objects.player.Player;
 import javafx.scene.canvas.Canvas;
@@ -14,15 +15,16 @@ public class Game {
     private GameInfo gameInfo;
 
     private DrawableSimulable[] entities;
-    //0-map, 1-player
+    //0-map, 1-player, 2-Coins
 
     public Game(Canvas canvas) {
         this.canvas = canvas;
         this.gameInfo = new GameInfo();
-        this.entities = new DrawableSimulable[2];
+        this.entities = new DrawableSimulable[3];
 
         entities[0] = new Map(gameInfo);
-        entities[1] = new Player(gameInfo);
+        entities[1] = new Coins(gameInfo);
+        entities[2] = new Player(gameInfo);
     }
 
     public void draw(GraphicsContext gc) {
@@ -38,6 +40,6 @@ public class Game {
     }
 
     public Player getPlayer(){
-        return (Player)this.entities[1];
+        return (Player)this.entities[2];
     }
 }

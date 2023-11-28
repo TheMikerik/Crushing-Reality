@@ -39,7 +39,7 @@ public class GameController {
             System.out.println("KeyListener initialized");
         }
         else {
-            throw new RuntimeException("             KeyListener not initialized             ");
+            throw new RuntimeException("KeyListener not initialized");
         }
     }
 

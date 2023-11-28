@@ -6,9 +6,7 @@ import java1.RUC0066.objects.map.Block;
 import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
-import javafx.scene.paint.Color;
 
 public class Player extends MovingObject {
 
@@ -86,7 +84,9 @@ public class Player extends MovingObject {
             }
         }
         if (!inJump && inAir){
-            this.setY(this.getY() + GRAVITY);
+            if( this.canMoveThere(this.getX(), this.getY() + GRAVITY) ) {
+                this.setY(this.getY() + GRAVITY);
+            }
         }
     }
 
@@ -118,10 +118,10 @@ public class Player extends MovingObject {
             }
         }
         if (moveLeft && this.canMoveThere(orgX - MOVEMENT_SPEED, orgY)) {
-            if (this.getX() % 150 < 50) {
+            if (this.getX() % 60 < 20) {
                 this.setPlayerTexture("LEFT");
             }
-            else if (this.getX() % 150 < 100){
+            else if (this.getX() % 60 < 40){
                 this.setPlayerTexture("LEFT2");
             }
             else{
@@ -130,10 +130,10 @@ public class Player extends MovingObject {
             this.setX(orgX - MOVEMENT_SPEED);
         }
         if (moveRight && this.canMoveThere(orgX + MOVEMENT_SPEED, orgY)) {
-            if (this.getX() % 150 < 50) {
+            if (this.getX() % 60 < 20) {
                 this.setPlayerTexture("RIGHT");
             }
-            else if (this.getX() % 150 < 100){
+            else if (this.getX() % 60 < 40){
                 this.setPlayerTexture("RIGHT2");
             }
             else{
