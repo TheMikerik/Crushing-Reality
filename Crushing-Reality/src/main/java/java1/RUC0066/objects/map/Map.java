@@ -4,7 +4,6 @@ import java1.RUC0066.abstraction.DrawableSimulable;
 
 import java1.RUC0066.objects.GameInfo;
 import javafx.geometry.Point2D;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
@@ -23,11 +22,11 @@ public class Map implements DrawableSimulable {
             {'D', 'D', 'D', 'D', 'D', '.', '.', '.', '.', '.', '.', '.', 'B', 'D', 'B', 'B', 'B', 'B', 'D', 'D', 'D', 'D', 'D'},
             {'e', 'e', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'B', '.', '.', '.', 'B', '.', '.', '.', '.', 'B', 'D', 'D', 'e', 'D'},
             {'D', 'D', 'D', 'D', 'B', 'B', 'B', 'B', 'B', '.', '.', 'D', '.', '.', '.', '.', '.', '.', '.', 'D', 'e', 'e', 'D'},
-            {'D', 'D', 'D', 'D', '.', '.', '.', '.', '.', '.', '.', 'D', 'D', '.', '.', '.', '.', '.', '.', 'D', 'D', 'D', 'D'},
-            {'D', 'D', 'D', 'D', '.', '.', '.', '.', '.', '.', '.', 'D', 'D', '.', 'D', '.', '.', '.', '.', 'D', 'D', 'D', 'D'},
+            {'D', 'D', 'D', 'D', '.', '.', '.', '.', '.', '.', '.', 'B', 'D', '.', '.', '.', '.', '.', '.', 'D', 'D', 'D', 'D'},
+            {'D', 'D', 'D', 'D', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'D', 'D', '.', '.', '.', '.', 'D', 'D', 'D', 'D'},
             {'D', 'D', 'D', 'D', '.', 'd', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'D', 'D', 'D', 'D', 'D'},
-            {'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', '.', 'a', 'D', 'D', 'D', 'D', 'D'},
-            {'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'a', '.', 'D', 'D', 'D', 'D', 'g', 'g'},
+            {'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', '.', '.', '.', '.', 'D', 'D', 'D', 'D', 'D'},
+            {'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', '.', '.', 'a', 'D', 'D', 'D', 'g', 'g'},
             {'D', 'a', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'e', 'e', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'g'}
     };//x5,y11
     private java.util.Map<Character, Image>  tileImages = new HashMap<>();
@@ -50,6 +49,7 @@ public class Map implements DrawableSimulable {
         this.blocks = new Block[block_height][block_length];
 
         this.initializeBlocks();
+        gi.saveMapBlocks(blocks);
         gi.setSpawn(this.getSpawnPoint());
         gi.setExit(this.getExitPoint());
     }
@@ -80,19 +80,19 @@ public class Map implements DrawableSimulable {
 
     private void initializeTileImages() {
         // Load and store images for each character in your map
-        tileImages.put('V', loadImage("/java1/RUC0066/textures-16p/VOID.png"));
-        tileImages.put('T', loadImage("/java1/RUC0066/textures-16p/DIRT_TOP.png"));
-        tileImages.put('D', loadImage("/java1/RUC0066/textures-16p/DIRT.png"));
-        tileImages.put('B', loadImage("/java1/RUC0066/textures-16p/DIRT_BOT.png"));
-        tileImages.put('.', loadImage("/java1/RUC0066/textures-16p/BACKGROUND.png"));
-        tileImages.put('I', loadImage("/java1/RUC0066/textures-16p/ICE.png"));
-        tileImages.put('b', loadImage("/java1/RUC0066/textures-16p/BARREL.png"));
-        tileImages.put('c', loadImage("/java1/RUC0066/textures-16p/CASE.png"));
-        tileImages.put('d', loadImage("/java1/RUC0066/textures-16p/DOORS.png"));
-        tileImages.put('o', loadImage("/java1/RUC0066/textures-16p/DOORS.png"));
-        tileImages.put('a', loadImage("/java1/RUC0066/textures-16p/DIRT_DIA.png"));
-        tileImages.put('g', loadImage("/java1/RUC0066/textures-16p/DIRT_GOLD.png"));
-        tileImages.put('e', loadImage("/java1/RUC0066/textures-16p/DIRT_EMERALD.png"));
+        tileImages.put('V', loadImage("/java1/RUC0066/textures-16p/World/VOID.png"));
+        tileImages.put('T', loadImage("/java1/RUC0066/textures-16p/World/DIRT_TOP.png"));
+        tileImages.put('D', loadImage("/java1/RUC0066/textures-16p/World/DIRT.png"));
+        tileImages.put('B', loadImage("/java1/RUC0066/textures-16p/World/DIRT_BOT.png"));
+        tileImages.put('.', loadImage("/java1/RUC0066/textures-16p/World/BACKGROUND.png"));
+        tileImages.put('I', loadImage("/java1/RUC0066/textures-16p/World/ICE.png"));
+        tileImages.put('b', loadImage("/java1/RUC0066/textures-16p/World/BARREL.png"));
+        tileImages.put('c', loadImage("/java1/RUC0066/textures-16p/World/CASE.png"));
+        tileImages.put('d', loadImage("/java1/RUC0066/textures-16p/World/DOORS.png"));
+        tileImages.put('o', loadImage("/java1/RUC0066/textures-16p/World/DOORS.png"));
+        tileImages.put('a', loadImage("/java1/RUC0066/textures-16p/World/DIRT_DIA.png"));
+        tileImages.put('g', loadImage("/java1/RUC0066/textures-16p/World/DIRT_GOLD.png"));
+        tileImages.put('e', loadImage("/java1/RUC0066/textures-16p/World/DIRT_EMERALD.png"));
         
     }
 

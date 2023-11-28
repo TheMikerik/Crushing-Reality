@@ -1,5 +1,1 @@
-TO DO:
-
-
-EDIT:
-Game only calls DRAW only once
+- Spawn and end location can be adjusted directly to the positions of the doors

@@ -13,4 +13,7 @@ public abstract class TextureObject extends GameObject implements DrawableSimula
     public Image getTexture(){
         return texture;
     }
+    public void setPlayerTexture(String texture){
+        this.texture = new Image(getClass().getResourceAsStream(("/java1/RUC0066/textures-16p/Player/PLAYER_" + texture + ".png")));
+    }
 }
