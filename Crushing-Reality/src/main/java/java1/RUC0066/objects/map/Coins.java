@@ -7,10 +7,15 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
 public class Coins implements DrawableSimulable {
-    private Point2D[] coinLocations = {
+    private Point2D[] coinLocations2 = {
         new Point2D(10, 4),
         new Point2D(17, 7),
         new Point2D(6, 8)
+    };
+    private Point2D[] coinLocations = {
+            new Point2D(11, 12),
+            new Point2D(9, 3),
+            new Point2D(19, 3)
     };
 
     private Coin[] coins;
