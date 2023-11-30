@@ -27,6 +27,10 @@ public class Game {
         entities[2] = new Player(gameInfo);
     }
 
+    public void switchMap(){
+        if( this.getPlayer().get_picked_coins() == 3 && this.getPlayer().canExitMap() ) {
+        }
+    }
     public void draw(GraphicsContext gc) {
         for( DrawableSimulable entity : entities){
             entity.draw(gc);
@@ -34,6 +38,8 @@ public class Game {
     }
 
     public void simulate(GraphicsContext gc) {
+        this.switchMap();
+
         for (DrawableSimulable entity : entities) {
             entity.simulate(gc);
             if (entity instanceof Coins coins){
@@ -42,7 +48,7 @@ public class Game {
                         if(entity2 instanceof Player player){
                            if(coin.intersect(player.getRectangle())){
                                if (coin.getDisplayStatus()) {
-                                   this.gameInfo.pickCoin();
+                                   this.getPlayer().pickCoin();
                                    coin.setNotDisplay();
                                }
                            }

@@ -11,7 +11,8 @@ import javafx.scene.input.KeyCode;
 public class Player extends MovingObject {
 
     private boolean jump, moveDown, moveLeft, moveRight, exit, inAir, respawn, inJump;
-    private Point2D SPAWN;
+    private Point2D SPAWN_P;
+    private Point2D EXIT_P;
     private final int MOVEMENT_SPEED;
     private final int TILE_SIZE;
     private final int PLAYER_TILE;
@@ -20,6 +21,7 @@ public class Player extends MovingObject {
 
     private final int maxJump;
     private int jump_partition;
+    private short picked_coins;
 
     public Player(GameInfo gi) {
         super(
@@ -31,7 +33,8 @@ public class Player extends MovingObject {
             true // COLLISION
         );
         this.MOVEMENT_SPEED = gi.getMovementSpeed();
-        this.SPAWN = gi.getSpawn();
+        this.SPAWN_P = gi.getSpawn();
+        this.EXIT_P = gi.getExit();
         this.MAP_BLOCKS = gi.getMapBlocks();
         this.TILE_SIZE = gi.getTileSize();
         this.PLAYER_TILE = gi.getPlayerTile();
@@ -40,8 +43,17 @@ public class Player extends MovingObject {
         this.inAir = false;
         this.inJump = false;
         this.maxJump = TILE_SIZE/2 + 2*TILE_SIZE;
+        this.picked_coins = 0;
 
         System.out.println("Player generated");
+    }
+
+    public short get_picked_coins(){
+        return picked_coins;
+    }
+    public void pickCoin(){
+        this.picked_coins++;
+        System.out.println("Coins picked: " + this.picked_coins);
     }
 
 
@@ -61,6 +73,16 @@ public class Player extends MovingObject {
             }
         }
         return true;
+    }
+
+    public boolean canExitMap(){
+        if ( this.intersect( new Rectangle2D(this.EXIT_P.getX(), this.EXIT_P.getY(), this.TILE_SIZE, this.TILE_SIZE)) && exit ){
+            System.out.println("Exiting");
+            return true;
+        }
+
+        System.out.println("Cannot exit");
+        return false;
     }
 
     private void jumpTick(){
@@ -143,11 +165,11 @@ public class Player extends MovingObject {
         }
 
         if (respawn){
-            this.setX( (int)SPAWN.getX() + 8 );
-            this.setY( (int)SPAWN.getY() + 16 );
+            this.setX( (int)SPAWN_P.getX() + 8 );
+            this.setY( (int)SPAWN_P.getY() + 16 );
         }
         if (exit){
-
+            this.canExitMap();
         }
     }
 

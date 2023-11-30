@@ -1,1 +1,1 @@
-- Spawn and end location can be adjusted directly to the positions of the doors
+- Speed of walking was 3
