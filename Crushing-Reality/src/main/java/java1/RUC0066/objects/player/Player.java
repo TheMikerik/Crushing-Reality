@@ -10,7 +10,7 @@ import javafx.scene.input.KeyCode;
 
 public class Player extends MovingObject {
 
-    private boolean jump, moveDown, moveLeft, moveRight, inAir, respawn, inJump;
+    private boolean jump, moveDown, moveLeft, moveRight, exit, inAir, respawn, inJump;
     private Point2D SPAWN;
     private final int MOVEMENT_SPEED;
     private final int TILE_SIZE;
@@ -146,6 +146,9 @@ public class Player extends MovingObject {
             this.setX( (int)SPAWN.getX() + 8 );
             this.setY( (int)SPAWN.getY() + 16 );
         }
+        if (exit){
+
+        }
     }
 
 
@@ -192,6 +195,9 @@ public class Player extends MovingObject {
             case R:
                 respawn = true;
                 break;
+            case E:
+                exit = true;
+                break;
         }
     }
 
@@ -211,6 +217,9 @@ public class Player extends MovingObject {
                 break;
             case R:
                 respawn = false;
+                break;
+            case E:
+                exit = false;
                 break;
         }
     }
