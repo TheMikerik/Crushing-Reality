@@ -16,12 +16,14 @@ public class GameInfo {
     private final int gravity;
     private Block[][] blocks;
     private Coin[] coins;
+    private short pickedCoins;
 
     public GameInfo(){
         tileSize = 55;
         playerTile = tileSize-16;
         movementSpeed = 3;
         gravity = 5;
+        pickedCoins = 0;
         player_texture = new Image(getClass().getResourceAsStream("/java1/RUC0066/textures-16p/Player/PLAYER_AFK.png"));
     }
 
@@ -62,5 +64,9 @@ public class GameInfo {
     }
     public int getGravity(){
         return gravity;
+    }
+    public void pickCoin(){
+        this.pickedCoins++;
+        System.out.println("Coins picked: " + this.pickedCoins);
     }
 }

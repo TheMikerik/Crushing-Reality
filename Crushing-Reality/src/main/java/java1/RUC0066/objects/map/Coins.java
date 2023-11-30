@@ -43,6 +43,10 @@ public class Coins implements DrawableSimulable {
         }
     }
 
+    public Coin[] getCoins(){
+        return this.coins;
+    }
+
     @Override
     public void draw(GraphicsContext gc) {
         gc.save();

@@ -6,8 +6,19 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
 public class Coin extends TextureObject {
+    private boolean display;
+
     Coin(int positionX, int positionY, int width, int height, Image texture, boolean collision_allowed) {
         super(positionX, positionY, width, height, texture, collision_allowed);
+        this.display = true;
+    }
+
+
+    public void setNotDisplay(){
+        this.display = false;
+    }
+    public boolean getDisplayStatus(){
+        return this.display;
     }
 
     @Override
@@ -22,9 +33,11 @@ public class Coin extends TextureObject {
 
     @Override
     public void draw(GraphicsContext gc) {
-        gc.save();
-        gc.drawImage(this.getTexture(), this.getX(), this.getY(), this.getH(), this.getW());
-        gc.restore();
+        if (this.display) {
+            gc.save();
+            gc.drawImage(this.getTexture(), this.getX(), this.getY(), this.getH(), this.getW());
+            gc.restore();
+        }
     }
 
     @Override

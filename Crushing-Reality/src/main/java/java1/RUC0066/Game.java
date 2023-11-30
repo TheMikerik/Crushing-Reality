@@ -36,6 +36,20 @@ public class Game {
     public void simulate(GraphicsContext gc) {
         for (DrawableSimulable entity : entities) {
             entity.simulate(gc);
+            if (entity instanceof Coins coins){
+                for(Coin coin : coins.getCoins()) {
+                    for (DrawableSimulable entity2 : entities){
+                        if(entity2 instanceof Player player){
+                           if(coin.intersect(player.getRectangle())){
+                               if (coin.getDisplayStatus()) {
+                                   this.gameInfo.pickCoin();
+                                   coin.setNotDisplay();
+                               }
+                           }
+                        }
+                    }
+                }
+            }
         }
     }
 
