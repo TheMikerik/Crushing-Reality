@@ -80,8 +80,6 @@ public class Player extends MovingObject {
             System.out.println("Exiting");
             return true;
         }
-
-        System.out.println("Cannot exit");
         return false;
     }
 
