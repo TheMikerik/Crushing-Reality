@@ -1,7 +1,7 @@
 package java1.RUC0066.objects.player;
 
 import java1.RUC0066.abstraction.MovingObject;
-import java1.RUC0066.objects.GameInfo;
+import java1.RUC0066.IO.GameInfo;
 import java1.RUC0066.objects.map.Block;
 import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;

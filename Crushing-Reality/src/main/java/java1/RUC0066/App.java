@@ -39,6 +39,7 @@ public class App extends Application {
 
     private void exitProgram(WindowEvent event)
     {
+        controller.endGame();
         System.exit(0);
     }
 }

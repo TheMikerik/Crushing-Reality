@@ -1,7 +1,7 @@
 package java1.RUC0066;
 
 import java1.RUC0066.abstraction.DrawableSimulable;
-import java1.RUC0066.objects.GameInfo;
+import java1.RUC0066.IO.GameInfo;
 import java1.RUC0066.objects.map.*;
 import java1.RUC0066.objects.player.Player;
 import javafx.scene.canvas.Canvas;
@@ -28,7 +28,13 @@ public class Game {
 
     public void switchMap(){
         if( this.getPlayer().get_picked_coins() == 3 && this.getPlayer().canExitMap() ) {
-            System.out.println("Exiting map");
+            System.out.println("Changing map");
+            gameInfo.nextLevel();
+
+            entities[0] = new Map(gameInfo);
+            entities[1] = new Coins(gameInfo);
+            entities[2] = new Traps(gameInfo);
+            entities[3] = new Player(gameInfo);
         }
     }
     public void draw(GraphicsContext gc) {
@@ -49,6 +55,7 @@ public class Game {
                            if(coin.intersect(player.getRectangle())){
                                if (coin.getDisplayStatus()) {
                                    this.getPlayer().pickCoin();
+                                   gameInfo.coins_picked();
                                    coin.setNotDisplay();
                                }
                            }
@@ -62,6 +69,7 @@ public class Game {
                         if(entity2 instanceof Player player){
                             if(trap.intersect(player.getRectangle())){
                                 this.getPlayer().respawnPlayer();
+                                gameInfo.died();
                             }
                         }
                     }
@@ -72,5 +80,10 @@ public class Game {
 
     public Player getPlayer(){
         return (Player)this.entities[3];
+    }
+
+
+    public void end(){
+        gameInfo.save_stats();
     }
 }

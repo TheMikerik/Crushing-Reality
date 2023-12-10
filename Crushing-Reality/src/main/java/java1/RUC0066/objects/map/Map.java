@@ -2,7 +2,8 @@ package java1.RUC0066.objects.map;
 
 import java1.RUC0066.abstraction.DrawableSimulable;
 
-import java1.RUC0066.objects.GameInfo;
+import java1.RUC0066.IO.GameInfo;
+import java1.RUC0066.IO.Readers.MapReader;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -12,45 +13,13 @@ import java.util.HashMap;
 
 
 public class Map implements DrawableSimulable {
-    private char[][] worldMap = {
-            {'V', 'V', 'c', 'b', 'V', 'V', 'V', 'V', 'V', 'V', 'V', 'V', 'V', 'c', 'V', 'V', 'V', 'b', 'V', 'V', 'V', 'V', 'V'},
-            {'V', 'b', 'c', 'b', 'b', 'V', 'V', 'V', 'c', 'V', 'V', 'V', 'V', 'c', 'b', 'c', 'c', 'b', 'c', 'c', 'V', 'V', 'V'},
-            {'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T'},
-            {'D', 'D', 'D', 'D', 'D', 'B', 'B', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'D', 'D', 'D', 'D'},
-            {'D', 'D', 'D', 'D', 'D', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'o', '.', 'D', 'D', 'D', 'D', 'D'},
-            {'D', 'D', 'D', 'D', 'D', '.', '.', '.', '.', '.', 'B', '.', '.', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D'},
-            {'D', 'D', 'D', 'D', 'D', '.', '.', 'D', '.', '.', '.', '.', 'B', 'D', 'B', 'B', 'B', 'B', 'D', 'D', 'D', 'D', 'D'},
-            {'e', 'e', 'D', 'D', 'D', 'D', '.', 'D', 'B', '.', '.', '.', '.', 'B', '.', '.', '.', '.', 'B', 'D', 'D', 'e', 'D'},
-            {'D', 'D', 'D', 'D', 'B', 'B', '.', 'B', '.', '.', '.', 'D', '.', '.', '.', '.', '.', '.', '.', 'D', 'e', 'e', 'D'},
-            {'D', 'D', 'B', 'B', '.', '.', '.', '.', '.', '.', '.', 'D', 'D', '.', '.', '.', 'B', '.', '.', 'D', 'D', 'D', 'D'},
-            {'D', 'D', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'B', 'B', 'B', '.', '.', '.', '.', '.', 'D', 'D', 'D', 'D'},
-            {'D', 'D', '.', 'd', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'D', 'D', 'D', 'D', 'D'},
-            {'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', '.', '.', '.', '.', 'D', 'D', 'D', 'D', 'D'},
-            {'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', '.', '.', 'a', 'D', 'D', 'D', 'g', 'g'},
-            {'D', 'a', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'e', 'e', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'g'}
-    };
-    private char[][] worldMap2 = {
-            {'V', 'V', 'c', 'V', 'V', 'V', 'b', 'b', 'V', 'V', 'V', 'b', 'V', 'V', 'V', 'V', 'V', 'b', 'V', 'V', 'V', 'V', 'V'},
-            {'V', 'b', 'b', 'V', 'V', 'c', 'c', 'c', 'b', 'V', 'V', 'c', 'c', 'V', 'V', 'V', 'b', 'c', 'c', 'c', 'V', 'V', 'V'},
-            {'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T'},
-            {'D', 'D', '.', '.', '.', '.', 'D', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'D', 'D', 'D'},
-            {'D', 'D', '.', 'd', 'D', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'D', 'D'},
-            {'a', 'D', 'B', 'D', 'B', 'B', 'B', '.', '.', '.', '.', '.', 'o', '.', '.', '.', 'D', 'D', 'B', '.', '.', 'D', 'D'},
-            {'D', 'D', '.', 'B', '.', '.', '.', '.', '.', '.', '.', 'B', 'B', 'B', '.', '.', 'D', 'D', '.', '.', 'B', 'D', 'a'},
-            {'D', 'D', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'B', 'D', '.', '.', '.', 'D', 'D'},
-            {'D', 'D', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'D', 'D', '.', '.', '.', '.', 'B', 'B', '.', '.', 'e', 'D'},
-            {'D', 'D', '.', '.', '.', 'D', 'D', 'D', '.', '.', '.', 'D', 'D', 'D', '.', '.', '.', '.', '.', '.', 'D', 'D', 'D'},
-            {'D', 'D', 'D', '.', '.', 'B', 'B', 'B', '.', '.', '.', 'B', 'D', 'D', 'D', 'D', '.', '.', 'B', '.', 'D', 'D', 'D'},
-            {'D', 'D', 'D', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'D', 'D', 'D', 'D', '.', '.', '.', '.', 'D', 'D', 'e'},
-            {'g', 'D', 'D', 'D', '.', '.', '.', '.', '.', '.', '.', '.', 'D', 'e', 'e', 'D', 'D', '.', '.', '.', 'g', 'D', 'D'},
-            {'g', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'e', 'D', 'D', 'D', 'D', 'D', 'g', 'D', 'D'},
-            {'g', 'g', 'D', 'D', 'D', 'a', 'a', 'D', 'a', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'a', 'D', 'D', 'D', 'D'}
-    };//x5,y11
+    private char[][] worldMap;
     private java.util.Map<Character, Image>  tileImages = new HashMap<>();
     private Block[][] blocks;
     private int block_height;
     private int block_length;
     private int TILE_SIZE;
+    private MapReader map_reader;
 
     private Point2D spawnPoint;
     private Point2D exitPoint;
@@ -59,6 +28,9 @@ public class Map implements DrawableSimulable {
         TILE_SIZE = gi.getTileSize();
 
         initializeTileImages();
+
+        this.map_reader = new MapReader(15,23);
+        this.worldMap = map_reader.LoadNextMap(gi.getLevel());
 
         this.block_height = worldMap.length;
         this.block_length = worldMap[0].length;
@@ -110,7 +82,7 @@ public class Map implements DrawableSimulable {
         tileImages.put('a', loadImage("/java1/RUC0066/textures-16p/World/DIRT_DIA.png"));
         tileImages.put('g', loadImage("/java1/RUC0066/textures-16p/World/DIRT_GOLD.png"));
         tileImages.put('e', loadImage("/java1/RUC0066/textures-16p/World/DIRT_EMERALD.png"));
-        
+
     }
 
     private Image loadImage(String fileName) {

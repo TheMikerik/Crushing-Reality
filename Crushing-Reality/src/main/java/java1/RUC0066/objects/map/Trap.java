@@ -25,11 +25,6 @@ public class Trap extends TextureObject {
     public void draw(GraphicsContext gc) {
         gc.save();
         gc.drawImage(this.getTexture(), this.getX(), this.getY(), this.getH(), this.getW());
-
-        gc.setStroke(Color.RED);
-        gc.setLineWidth(2.0);
-        gc.strokeRect(this.getX(), this.getY(), this.getW(), this.getH());
-
         gc.restore();
     }
 
