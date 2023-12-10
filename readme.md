@@ -13,9 +13,9 @@ Crushing Reality is a 2D game created using Java and JavaFX. The primary objecti
    ```
 2. Run the Game:
     ```bash
-    cd blade-runner
-    javac BladeRunner.java
-    java BladeRunner
+    cd src/main/java/java1/RUC0066
+    javac CrushingReality.java
+    java CrushingReality
     ```
 3. Game Controls
     - W, A, S, D keys for movement

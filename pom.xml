@@ -41,7 +41,7 @@
                         <!-- Usage: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>java1.RUC0066.App</mainClass>
+                            <mainClass>java1.RUC0066.CrushingReality</mainClass>
                         </configuration>
                     </execution>
                 </executions>

@@ -11,7 +11,7 @@ import java.io.IOException;
 /**
  * JavaFX App
  */
-public class App extends Application {
+public class CrushingReality extends Application {
 
 
    private GameController controller;
@@ -19,7 +19,7 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
 
-        FXMLLoader loader = new FXMLLoader(App.class.getResource("GameView.fxml"));
+        FXMLLoader loader = new FXMLLoader(CrushingReality.class.getResource("GameView.fxml"));
         Scene scene = new Scene(loader.load());
 
         stage.setScene(scene);

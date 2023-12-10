@@ -1,2 +1,2 @@
-die_count=14
-coin_picked=3
+die_count=0
+coin_picked=0
