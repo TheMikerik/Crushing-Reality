@@ -8,12 +8,10 @@ public class DrawingThread extends AnimationTimer {
 
     private final GraphicsContext gc;
     private final Game game;
-    private final Canvas canvas;
     private long lastTime = -1;
     private boolean first = true;
 
     public DrawingThread(Canvas canvas, Game game) {
-        this.canvas = canvas;
         this.gc = canvas.getGraphicsContext2D();
         this.game = game;
 
@@ -27,8 +25,6 @@ public class DrawingThread extends AnimationTimer {
             first = false;
         }
         if (lastTime > 0){
-//            gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
-//            game.simulate((now - lastTime) / 1e9);
             game.simulate(gc);
         }
         lastTime = now;

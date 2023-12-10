@@ -1,2 +1,0 @@
-die_count=0
-coin_picked=0
