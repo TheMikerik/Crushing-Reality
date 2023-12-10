@@ -15,7 +15,6 @@ public class GameInfo {
     private Point2D exit;
     private final int gravity;
     private Block[][] blocks;
-    private Coin[] coins;
 
     public GameInfo(){
         tileSize = 55;
@@ -53,9 +52,6 @@ public class GameInfo {
     }
     public void saveMapBlocks(Block[][] blocks){
         this.blocks = blocks;
-    }
-    public void saveCoins(Coin[] coins){
-        this.coins = coins;
     }
     public Block[][] getMapBlocks(){
         return this.blocks;

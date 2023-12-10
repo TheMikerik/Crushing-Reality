@@ -26,7 +26,6 @@ public class Coins implements DrawableSimulable {
 
         this.coins = new Coin[coinLocations.length];
         this.initializeCoins();
-        gi.saveCoins(coins);
     }
 
     private void initializeCoins(){
@@ -34,9 +33,9 @@ public class Coins implements DrawableSimulable {
         for(int i=0; i < coinLocations.length ; i++){
             Point2D coin = coinLocations[i];
             coins[i] = new Coin(
-                    (int)coin.getX() * 55,
+                    (int) coin.getX() * 55,
                     (int) coin.getY() * 55,
-                    this.tileSize,
+                    this.tileSize, 
                     this.tileSize,
                     texture,
                     false );

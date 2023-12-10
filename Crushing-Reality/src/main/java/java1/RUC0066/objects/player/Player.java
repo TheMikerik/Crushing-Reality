@@ -77,7 +77,6 @@ public class Player extends MovingObject {
 
     public boolean canExitMap(){
         if ( this.intersect( new Rectangle2D(this.EXIT_P.getX(), this.EXIT_P.getY(), this.TILE_SIZE, this.TILE_SIZE)) && exit ){
-            System.out.println("Exiting");
             return true;
         }
         return false;
@@ -163,12 +162,16 @@ public class Player extends MovingObject {
         }
 
         if (respawn){
-            this.setX( (int)SPAWN_P.getX() + 8 );
-            this.setY( (int)SPAWN_P.getY() + 16 );
+            this.respawnPlayer();
         }
         if (exit){
             this.canExitMap();
         }
+    }
+
+    public void respawnPlayer(){
+        this.setX( (int)SPAWN_P.getX() + 8 );
+        this.setY( (int)SPAWN_P.getY() + 16 );
     }
 
 
