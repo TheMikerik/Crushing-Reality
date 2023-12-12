@@ -20,6 +20,7 @@ Crushing Reality is a 2D game created using Java and JavaFX. The primary objecti
 3. Game Controls
     - W, A, S, D keys for movement
     - R key for respawn
+    - E key to enter the exit doors
     - Avoid blade traps to stay alive
     - Collect all coins to unlock the next level
 
