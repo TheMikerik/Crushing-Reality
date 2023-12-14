@@ -27,7 +27,6 @@ public class Traps implements DrawableSimulable {
         switch(level){
             case 1:
                 trapsLocation = new Point2D[]{
-                        new Point2D(14, 12),
                         new Point2D(9, 7),
                         new Point2D(5, 11),
                         new Point2D(8, 11)
